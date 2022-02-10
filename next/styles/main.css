@@ -23,6 +23,7 @@ p,
 figure,
 picture {
   margin: 0;
+  font-family: "Barlow", sans-serif;
 }
 
 /* set up the body */
