@@ -273,13 +273,16 @@ select {
 }
 
 .underline-indicators * {
-  cursor: pointer;
   padding: var(--m-underline, 1rem) 0;
+}
+
+.underline-indicators a {
+  cursor: pointer;
   border: 0;
   border-bottom: 2px solid rgba(255, 255, 255, 0);
 }
 
-.underline-indicators *:hover, .underline-indicators *:focus {
+.underline-indicators a:hover, .underline-indicators a:focus {
   border-color: rgba(255, 255, 255, 0.5);
 }
 

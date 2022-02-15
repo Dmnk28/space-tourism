@@ -209,8 +209,13 @@ select {
 
 .underline-indicators { 
     * {
-        cursor: pointer;
         padding: var(--m-underline, 1rem) 0;
+
+    }
+    
+    a {
+        cursor: pointer;
+        // padding: var(--m-underline, 1rem) 0;
         border: 0;
         border-bottom: 2px solid rgba($clr-white, 0);        
 
