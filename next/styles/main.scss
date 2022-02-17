@@ -165,7 +165,7 @@ select {
 /* ---------- */
 .large-button {
     position: relative;
-    display: grid;
+    display: inline-grid;
     place-items: center;
     z-index: 1;
     padding: 0 2em;
@@ -219,14 +219,21 @@ select {
         border: 0;
         border-bottom: 2px solid rgba($clr-white, 0);        
 
-        &:hover,
-        &:focus {
+        &:hover {
             border-color: rgba($clr-white, .5);
         }
+
+        &:focus {
+            border-color: rgba($clr-white, 1);
+        }
+/* 
+        &:visited {
+            color: inherit;
+        } */
     }
     .active,
     [aria-selected="true"] {
-        border-color: $clr-white;
+        border-color: rgba($clr-white, 1);
     }
 }
 

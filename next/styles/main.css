@@ -225,8 +225,8 @@ select {
 /* ---------- */
 .large-button {
   position: relative;
-  display: -ms-grid;
-  display: grid;
+  display: -ms-inline-grid;
+  display: inline-grid;
   place-items: center;
   z-index: 1;
   padding: 0 2em;
@@ -280,15 +280,23 @@ select {
   cursor: pointer;
   border: 0;
   border-bottom: 2px solid rgba(255, 255, 255, 0);
+  /* 
+        &:visited {
+            color: inherit;
+        } */
 }
 
-.underline-indicators a:hover, .underline-indicators a:focus {
+.underline-indicators a:hover {
   border-color: rgba(255, 255, 255, 0.5);
+}
+
+.underline-indicators a:focus {
+  border-color: white;
 }
 
 .underline-indicators .active,
 .underline-indicators [aria-selected="true"] {
-  border-color: #FFFFFF;
+  border-color: white;
 }
 
 .tab-list {
