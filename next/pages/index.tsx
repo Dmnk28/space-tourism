@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 // import Image from 'next/image'
+import Link from 'next/link';
 
 import Navigation from '../components/Navigation';
 
@@ -13,15 +14,26 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
 
-      <main className='container text-white'>
-      <Navigation />
-      So, you want to travel to
-      Space
-      Let’s face it; if you want to go to space, you might as well genuinely go to 
-      outer space and not hover kind of on the edge of it. Well sit back, and relax 
-      because we’ll give you a truly out of this world experience!
+      <header className="flex">
+        <Navigation />
+      </header>
 
-      Explore
+      <main className='container text-white'>
+      
+        <h1 className='uppercase ff-sans-serif fs-500 text-light letter-spacing-1'> 
+          So, you want to travel to
+          <span className='text-white ff-serif fs-900'>Space</span>
+        </h1> 
+        
+        <p>
+          Let’s face it; if you want to go to space, you might as well genuinely go to 
+          outer space and not hover kind of on the edge of it. Well sit back, and relax 
+          because we’ll give you a truly out of this world experience!
+        </p>
+
+        <Link href="/" passHref>
+          <a className='large-button uppercase ff-serif fs-600 text-dark bg-white'>Explore</a>
+        </Link> 
       </main>
 
     </div>
