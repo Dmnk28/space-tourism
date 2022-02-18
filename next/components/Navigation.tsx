@@ -1,9 +1,13 @@
 import { NextComponentType } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import React, { SetStateAction } from "react";
 
+type NavigationProps = {
+    setPageBgr: React.Dispatch<React.SetStateAction<string>>;
+}
 
-const Navigation: NextComponentType = () => {
+const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
     return (
         <>
             <div>
@@ -15,7 +19,7 @@ const Navigation: NextComponentType = () => {
                         <Link href={'/'} passHref><a className="uppercase text-white letter-spacing-2"><span>00</span>Home</a></Link> {/* Link allows not more than one Child, so I use an a-element in combination with passHref */}
                     </li>
                     <li>
-                        <Link href={'/destination'} passHref><a className="uppercase text-white letter-spacing-2"><span>01</span>Destination</a></Link>
+                        <Link href={'/destination'} passHref><a  onClick={() => setPageBgr('destination')} className="uppercase text-white letter-spacing-2"><span>01</span>Destination</a></Link>
                     </li>
                     <li>
                         <Link href={'/crew'} passHref><a className="uppercase text-white letter-spacing-2"><span>02</span>Crew</a></Link> 
