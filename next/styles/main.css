@@ -36,11 +36,11 @@ p {
 }
 
 /* set up the body */
-body {
+body,
+#__next {
   font-family: "Barlow", sans-serif;
-  font-size: 1.125rem;
+  font-size: clamp(0.9375rem, 1rem, 1.125rem);
   color: #FFFFFF;
-  background-color: #0B0D17;
   line-height: 1.5;
   min-height: 100vh;
   display: -ms-grid;
@@ -48,6 +48,10 @@ body {
   -ms-grid-rows: min-content 1fr;
       grid-template-rows: -webkit-min-content 1fr;
       grid-template-rows: min-content 1fr;
+}
+
+.z-index-bgr {
+  z-index: -1;
 }
 
 /* images */
@@ -96,6 +100,10 @@ select {
   gap: var(--gap, 1rem);
 }
 
+.d-block {
+  display: block;
+}
+
 .flow > *:where(:not(:first-child)) {
   margin-top: 1rem;
   outline: 1px solid red;
@@ -110,10 +118,19 @@ select {
 .grid-container {
   display: -ms-grid;
   display: grid;
+  text-align: center;
+  place-items: center;
+  row-gap: 10%;
+  padding: 0 1rem;
+}
+
+.grid-container .grid-container * {
+  max-width: 50ch;
 }
 
 @media (min-width: 45rem) {
   .grid-container {
+    text-align: left;
     -webkit-column-gap: var(--container-gap, 2rem);
             column-gap: var(--container-gap, 2rem);
     -ms-grid-columns: minmax(2rem, 1fr) (minmax(0px, 40rem))[2] minmax(2rem, 1fr);
@@ -126,6 +143,12 @@ select {
   .grid-container *:last-child {
     -ms-grid-column: 3;
     grid-column: 3;
+  }
+  .grid-container--home {
+    padding-bottom: max(6rem, 15vh);
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: end;
   }
 }
 
@@ -197,19 +220,19 @@ select {
 }
 
 .fs-900 {
-  font-size: 9.375rem;
+  font-size: clamp(5rem, 7vw + 1rem, 9.375rem);
 }
 
 .fs-800 {
-  font-size: 6.25rem;
+  font-size: clamp(3.5rem, 5rem, 6.35rem);
 }
 
 .fs-700 {
-  font-size: 3.5rem;
+  font-size: clamp(1.5rem, 2.5rem, 3.5rem);
 }
 
 .fs-600 {
-  font-size: 2rem;
+  font-size: clamp(1rem, 1.5rem, 2rem);
 }
 
 .fs-500 {
@@ -217,7 +240,7 @@ select {
 }
 
 .fs-400 {
-  font-size: 1.125rem;
+  font-size: clamp(0.9375rem, 1rem, 1.125rem);
 }
 
 .fs-300 {
@@ -237,7 +260,7 @@ select {
 
 .numbered-title {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 1.125rem;
+  font-size: clamp(0.9375rem, 1rem, 1.125rem);
   text-transform: uppercase;
 }
 
@@ -260,6 +283,7 @@ select {
   aspect-ratio: 1;
   text-decoration: none;
   border-radius: 50%;
+  font-size: 2rem;
 }
 
 .large-button::after {

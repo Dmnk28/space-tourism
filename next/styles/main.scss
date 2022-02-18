@@ -38,15 +38,21 @@ p {
 }
 
 /* set up the body */
-body {
+body,
+#__next {
+    // position: relative;
     font-family: $ff-sans-normal;
     font-size: $fs-400;
     color: $clr-white;
-    background-color: $clr-dark;
+    // background-color: $clr-dark;
     line-height: 1.5;
     min-height: 100vh;
     display: grid;
     grid-template-rows: min-content 1fr;
+}
+
+.z-index-bgr {
+    z-index: -1;
 }
 
 /* images */
@@ -90,6 +96,10 @@ select {
     gap: var(--gap, 1rem);
 }
 
+.d-block {
+    display: block;
+}
+
 .flow > *:where(:not(:first-child)) {
     margin-top: 1rem;
     outline: 1px solid red;
@@ -103,8 +113,19 @@ select {
 
 .grid-container {
     display: grid;
-    
-    @media (min-width: 45rem) {
+    text-align: center;
+    place-items: center;
+    row-gap: 10%;
+    padding: 0 1rem;
+
+    .grid-container * {
+        max-width: 50ch;
+    }
+}
+
+@media (min-width: 45rem) {
+    .grid-container {
+        text-align: left;
         column-gap: var(--container-gap, 2rem);
         grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0px, 40rem)) minmax(2rem, 1fr);
         
@@ -116,8 +137,12 @@ select {
             grid-column: 3;
         }
     }
-}
 
+    .grid-container--home {
+        padding-bottom: unquote("max(6rem, 15vh)");
+        align-items: end;
+    }    
+}
 
 .sr-only {
     position: absolute;
@@ -192,6 +217,7 @@ select {
     aspect-ratio: 1;
     text-decoration: none;
     border-radius: 50%;
+    font-size: 2rem;
 
     &::after {
         content: '';
