@@ -1,6 +1,5 @@
 import { NextComponentType } from "next";
 import Image from "next/image";
-import { ReactNode } from "react";
 
 type BgImg = {
     pageBgr: string;
