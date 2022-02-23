@@ -2,7 +2,9 @@ import { NextPage } from "next";
 
 const Destination: NextPage = () => {
     return (
-        <div></div>
+        <div>
+            Test
+        </div>
     );
 }
 
