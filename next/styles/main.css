@@ -48,10 +48,15 @@ body,
   -ms-grid-rows: min-content 1fr;
       grid-template-rows: -webkit-min-content 1fr;
       grid-template-rows: min-content 1fr;
+  z-index: 1;
 }
 
 .z-index-bgr {
   z-index: -1;
+}
+
+.z-1 {
+  z-index: 1;
 }
 
 /* images */
@@ -107,6 +112,10 @@ select {
 .flow > *:where(:not(:first-child)) {
   margin-top: 1rem;
   outline: 1px solid red;
+}
+
+.relative {
+  position: relative;
 }
 
 .container {

@@ -5,15 +5,19 @@ type BgImg = {
     pageBgr: string;
 }
 
-const BackgroundImage: React.FC<BgImg> = ({pageBgr}) => {
+const BackgroundImage: React.FC<BgImg> = ({ pageBgr }) => {
     
     return (
-        <Image 
-            src={`/${pageBgr}/background-${pageBgr}-mobile.jpg`}
-            layout="fill"
-            objectFit="cover" 
-            objectPosition="bottom center"
-            className='z-index-bgr'/>
+        
+            <Image 
+                src={`/${pageBgr}/background-${pageBgr}-desktop.jpg`}
+                // width={375}
+                // height={667}
+                layout="fill"
+                objectFit="cover" 
+                objectPosition="bottom center"
+                className='flex z-index-bgr'
+            />
         )
 }
 
