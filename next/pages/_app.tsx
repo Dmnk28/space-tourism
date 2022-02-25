@@ -1,8 +1,9 @@
-import '../styles/main.css';
 import type { AppProps } from 'next/app';
-import Navigation from '../components/Navigation';
 import { useState } from 'react';
-import Image from 'next/image';
+
+import '../styles/main.css';
+
+import Navigation from '../components/Navigation';
 import BackgroundImage from '../components/BackgroundImage';
 
 
