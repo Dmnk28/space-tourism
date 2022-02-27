@@ -21,8 +21,11 @@ const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
             <div>
                 <Image src="/logo.svg" alt="space tourism logo" className="logo" width={30} height={30} />
             </div>
+            <button className="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false"> 
+                <span className="sr-only">Menu</span>
+            </button>
             <nav>
-                <ul className="primary-navigation underline-indicators flex">
+                <ul id="primary-navigation" className="primary-navigation underline-indicators flex">
                     <li>
                         <Link href={'/'} passHref><a className="uppercase text-white letter-spacing-2" title="home" onClick={handleClick}><span>00</span>Home</a></Link> {/* Link allows not more than one Child, so I use an a-element in combination with passHref */}
                     </li>

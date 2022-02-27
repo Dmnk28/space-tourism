@@ -287,7 +287,6 @@ select {
   display: -ms-inline-grid;
   display: inline-grid;
   place-items: center;
-  z-index: 1;
   padding: 0 2em;
   aspect-ratio: 1;
   text-decoration: none;
@@ -316,7 +315,6 @@ select {
 }
 
 .primary-navigation {
-  --gap: 8rem;
   --m-underline: 2rem;
   list-style: none;
   padding: 0;
@@ -330,6 +328,25 @@ select {
 .primary-navigation a span {
   margin-right: .5em;
   font-weight: 700;
+}
+
+@media (max-width: 35rem) {
+  .primary-navigation {
+    --m-underline: .5rem;
+    list-style: none;
+    padding: min(20rem, 15vh) 2rem;
+    margin: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: fixed;
+    inset: 0 0 0 30%;
+    background-color: rgba(255, 255, 255, 0.05);
+    -webkit-backdrop-filter: blur(1.5rem);
+            backdrop-filter: blur(1.5rem);
+    z-index: 9;
+  }
 }
 
 .underline-indicators * {
@@ -354,9 +371,10 @@ select {
   border-color: white;
 }
 
-.underline-indicators .active,
-.underline-indicators [aria-selected="true"] {
-  border-color: white;
+@media (max-width: 35rem) {
+  .primary-navigation.underline-indicators a {
+    border-bottom: 0;
+  }
 }
 
 .tab-list {
