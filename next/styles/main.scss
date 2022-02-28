@@ -314,9 +314,10 @@ select {
     flex-direction: column;
     position: fixed;
     inset: 0 0 0 30%;
-    background-color: rgba($clr-dark,0.75); // Default for browsers not supporting backdrop
-    z-index: 9;
+    background-color: rgba($clr-dark, 0.75); // Default for browsers not supporting backdrop
+    z-index: 2;
     transform: translateX(100%);
+    transition: transform 500ms ease-in-out;
 
     @supports (backdrop-filter: blur(1.5rem)) {
       // Handle Browser Support
@@ -334,11 +335,40 @@ select {
   width: 1.5rem;
   aspect-ratio: 1;
   background: transparent;
-    background-image: url('/shared/icon-hamburger.svg');
+  background-image: url('/shared/icon-hamburger.svg');
   background-repeat: no-repeat;
+  background-position: center;
   border: none;
-  z-index: 1;
+  z-index: 3;
+
+  &[aria-expanded="true"] {
+    background-image: url('/shared/icon-close.svg');
+  }
+
+  &:focus-visible {
+    outline: 5px solid red;
+    outline-offset: 5px;
+  }
 }
+
+.mobile-active {
+  @at-root .primary-navigation#{&} {
+    transform: translateX(0);
+    // animation: slidein .4s;
+  }
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+
 
 .underline-indicators {
   * {

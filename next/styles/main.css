@@ -344,9 +344,13 @@ select {
     position: fixed;
     inset: 0 0 0 30%;
     background-color: rgba(11, 13, 23, 0.75);
-    z-index: 9;
+    z-index: 2;
     -webkit-transform: translateX(100%);
             transform: translateX(100%);
+    -webkit-transition: -webkit-transform 500ms ease-in-out;
+    transition: -webkit-transform 500ms ease-in-out;
+    transition: transform 500ms ease-in-out;
+    transition: transform 500ms ease-in-out, -webkit-transform 500ms ease-in-out;
   }
   @supports ((-webkit-backdrop-filter: blur(1.5rem)) or (backdrop-filter: blur(1.5rem))) {
     .primary-navigation {
@@ -367,8 +371,45 @@ select {
   background: transparent;
   background-image: url("/shared/icon-hamburger.svg");
   background-repeat: no-repeat;
+  background-position: center;
   border: none;
-  z-index: 1;
+  z-index: 3;
+}
+
+.mobile-nav-toggle[aria-expanded="true"] {
+  background-image: url("/shared/icon-close.svg");
+}
+
+.mobile-nav-toggle:focus-visible {
+  outline: 5px solid red;
+  outline-offset: 5px;
+}
+
+.primary-navigation.mobile-active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+@-webkit-keyframes slidein {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes slidein {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
 }
 
 .underline-indicators * {
