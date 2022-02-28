@@ -25,8 +25,8 @@ const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
     
     const handleBurgerMenu = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>):void => {
         event.preventDefault();
-        const nav:HTMLElement|null = document.getElementById('primary-navigation');
-        console.log(!burgerMenuOpen.isMenuOpen);
+        const nav:HTMLElement|null  =  document.getElementById('primary-navigation');
+
         if (!burgerMenuOpen.isMenuOpen) {
             nav?.classList.add('mobile-active');
         } else {
@@ -34,7 +34,7 @@ const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
         }
         
         setBurgerMenuOpen(prevMenuOpen => ({ 
-            isMenuOpen: !prevMenuOpen.isMenuOpen 
+            isMenuOpen: !prevMenuOpen.isMenuOpen,
         }));
     }
 
@@ -43,7 +43,7 @@ const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
             <div>
                 <Image src="/logo.svg" alt="space tourism logo" className="logo" width={30} height={30} />
             </div>
-            <button className="mobile-nav-toggle" onClick={handleBurgerMenu} aria-controls="primary-navigation" aria-expanded="false"> 
+            <button className="mobile-nav-toggle" onClick={handleBurgerMenu} aria-controls="primary-navigation" aria-expanded={burgerMenuOpen.isMenuOpen}> 
                 <span className="sr-only">Menu</span>
             </button>
             <nav>
