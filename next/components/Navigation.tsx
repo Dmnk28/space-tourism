@@ -1,14 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { MouseEventHandler, SetStateAction } from "react";
+import React, { useState } from "react";
 
 type NavigationProps = {
     setPageBgr: React.Dispatch<React.SetStateAction<string>>;
 }
 
+type MenuOpen = {
+    isMenuOpen: boolean;
+}
+
 const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
     const router = useRouter();
+    const [burgerMenuOpen, setBurgerMenuOpen] = useState<MenuOpen>({
+        isMenuOpen: false,
+    });
 
     const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>):void => {
         event.preventDefault();
@@ -16,12 +23,27 @@ const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
         setPageBgr(event.currentTarget.title);
     }
     
+    const handleBurgerMenu = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>):void => {
+        event.preventDefault();
+        const nav:HTMLElement|null = document.getElementById('primary-navigation');
+        console.log(!burgerMenuOpen.isMenuOpen);
+        if (!burgerMenuOpen.isMenuOpen) {
+            nav?.classList.add('mobile-active');
+        } else {
+            nav?.classList.remove('mobile-active');
+        }
+        
+        setBurgerMenuOpen(prevMenuOpen => ({ 
+            isMenuOpen: !prevMenuOpen.isMenuOpen 
+        }));
+    }
+
     return (
         <>
             <div>
                 <Image src="/logo.svg" alt="space tourism logo" className="logo" width={30} height={30} />
             </div>
-            <button className="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false"> 
+            <button className="mobile-nav-toggle" onClick={handleBurgerMenu} aria-controls="primary-navigation" aria-expanded="false"> 
                 <span className="sr-only">Menu</span>
             </button>
             <nav>
