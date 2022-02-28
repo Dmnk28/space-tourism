@@ -49,6 +49,7 @@ body,
       grid-template-rows: -webkit-min-content 1fr;
       grid-template-rows: min-content 1fr;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 .z-index-bgr {
@@ -274,7 +275,7 @@ select {
 }
 
 .numbered-title span {
-  margin-right: .5em;
+  margin-right: 0.5em;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.25);
 }
@@ -295,7 +296,7 @@ select {
 }
 
 .large-button::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
   background-color: rgba(255, 255, 255, 0.15);
@@ -326,13 +327,13 @@ select {
 }
 
 .primary-navigation a span {
-  margin-right: .5em;
+  margin-right: 0.5em;
   font-weight: 700;
 }
 
 @media (max-width: 35rem) {
   .primary-navigation {
-    --m-underline: .5rem;
+    --m-underline: 0.5rem;
     list-style: none;
     padding: min(20rem, 15vh) 2rem;
     margin: 0;
@@ -342,11 +343,32 @@ select {
             flex-direction: column;
     position: fixed;
     inset: 0 0 0 30%;
-    background-color: rgba(255, 255, 255, 0.05);
-    -webkit-backdrop-filter: blur(1.5rem);
-            backdrop-filter: blur(1.5rem);
+    background-color: rgba(11, 13, 23, 0.75);
     z-index: 9;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
   }
+  @supports ((-webkit-backdrop-filter: blur(1.5rem)) or (backdrop-filter: blur(1.5rem))) {
+    .primary-navigation {
+      background-color: rgba(255, 255, 255, 0.15);
+      -webkit-backdrop-filter: blur(1.5rem);
+              backdrop-filter: blur(1.5rem);
+    }
+  }
+}
+
+.mobile-nav-toggle {
+  display: block;
+  position: absolute;
+  right: 1rem;
+  top: 2rem;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  background: transparent;
+  background-image: url("/shared/icon-hamburger.svg");
+  background-repeat: no-repeat;
+  border: none;
+  z-index: 1;
 }
 
 .underline-indicators * {
@@ -386,7 +408,7 @@ select {
   border: 0;
   border-radius: 50%;
   aspect-ratio: 1;
-  padding: .5rem;
+  padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.25);
 }
 
