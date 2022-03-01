@@ -315,11 +315,35 @@ select {
           transform: scale(1.5);
 }
 
+/* HEADER */
+.primary-header {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo {
+  margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+  min-width: 30px;
+  aspect-ratio: 1;
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
 .primary-navigation {
+  --gap: clamp(1.5rem, 4vw, 3rem);
   --m-underline: 2rem;
   list-style: none;
   padding: 0;
   margin: 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(1.5rem);
+          backdrop-filter: blur(1.5rem);
 }
 
 .primary-navigation a {
@@ -361,28 +385,13 @@ select {
   }
 }
 
-.mobile-nav-toggle {
-  display: block;
-  position: absolute;
-  right: 1rem;
-  top: 2rem;
-  width: 1.5rem;
-  aspect-ratio: 1;
-  background: transparent;
-  background-image: url("/shared/icon-hamburger.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  border: none;
-  z-index: 3;
-}
-
-.mobile-nav-toggle[aria-expanded="true"] {
-  background-image: url("/shared/icon-close.svg");
-}
-
-.mobile-nav-toggle:focus-visible {
-  outline: 5px solid red;
-  outline-offset: 5px;
+@media (min-width: 35rem) and (max-width: 45rem) {
+  .primary-navigation {
+    padding-inline: 3rem;
+  }
+  .primary-navigation a > span {
+    display: none;
+  }
 }
 
 .primary-navigation.mobile-active {
@@ -390,25 +399,27 @@ select {
           transform: translateX(0);
 }
 
-@-webkit-keyframes slidein {
-  from {
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+@media (max-width: 35rem) {
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    background: transparent;
+    background-image: url("/shared/icon-hamburger.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    z-index: 3;
   }
-  to {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
+  .mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url("/shared/icon-close.svg");
   }
-}
-
-@keyframes slidein {
-  from {
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
-  }
-  to {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
+  .mobile-nav-toggle:focus-visible {
+    outline: 5px solid red;
+    outline-offset: 5px;
   }
 }
 

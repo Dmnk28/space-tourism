@@ -14,7 +14,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <BackgroundImage pageBgr={pageBgr}/>
-      <header className="flex z-1">
+      <header className="primary-header flex z-1">
         <Navigation setPageBgr={setPageBgr}/>
       </header>
       <Component className="z-1" {...pageProps} />

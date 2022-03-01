@@ -40,8 +40,8 @@ const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
 
     return (
         <>
-            <div>
-                <Image src="/logo.svg" alt="space tourism logo" className="logo" width={30} height={30} />
+            <div className="logo">
+                <Image src="/logo.svg" alt="space tourism" width={30} height={30} />
             </div>
             <button className="mobile-nav-toggle" onClick={handleBurgerMenu} aria-controls="primary-navigation" aria-expanded={burgerMenuOpen.isMenuOpen}> 
                 <span className="sr-only">Menu</span>
