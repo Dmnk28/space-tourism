@@ -175,6 +175,26 @@ select {
   border: 0;
 }
 
+.skip-to-content {
+  position: absolute;
+  background: #FFFFFF;
+  color: #0B0D17;
+  padding: .5em 1em;
+  margin-inline: auto;
+  z-index: 0;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: -webkit-transform 500ms ease-in-out;
+  transition: -webkit-transform 500ms ease-in-out;
+  transition: transform 500ms ease-in-out;
+  transition: transform 500ms ease-in-out, -webkit-transform 500ms ease-in-out;
+}
+
+.skip-to-content:focus {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
 /* Colors */
 .bg-dark {
   background-color: #0B0D17;
