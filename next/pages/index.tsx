@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
 
-      <div className='grid-container grid-container--home'>
+      <main className='grid-container grid-container--home'>
         <div>
           <h1 className='uppercase ff-sans-serif fs-500 text-light letter-spacing-1'> 
             So, you want to travel to
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             <a className='large-button uppercase ff-serif text-dark bg-white'>Explore</a>
           </Link> 
         </div>
-      </div>
+      </main>
     </React.Fragment>
   )
 }
