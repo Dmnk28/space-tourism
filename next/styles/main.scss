@@ -458,7 +458,7 @@ select {
       border-color: rgba($clr-white, 0.5);
     }
 
-    &:focus {
+    &:focus, &:active {
       border-color: rgba($clr-white, 1);
     }
 
@@ -467,16 +467,15 @@ select {
         border-bottom: 0;
       }
     }
-
+    &[aria-selected="true"] {
+        border-color: rgba($clr-white, 1);
+    }
     /* 
         &:visited {
             color: inherit;
         } */
   }
-  // .active,
-  // [aria-selected="true"] {
-  //     border-color: rgba($clr-white, 1);
-  // }
+  
 }
 
 .tab-list {

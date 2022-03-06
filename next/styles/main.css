@@ -505,7 +505,7 @@ select {
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-.underline-indicators a:focus {
+.underline-indicators a:focus, .underline-indicators a:active {
   border-color: white;
 }
 
@@ -513,6 +513,10 @@ select {
   .primary-navigation.underline-indicators a {
     border-bottom: 0;
   }
+}
+
+.underline-indicators a[aria-selected="true"] {
+  border-color: white;
 }
 
 .tab-list {
