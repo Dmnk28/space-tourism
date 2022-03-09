@@ -30,37 +30,35 @@ const Destination: NextPage = () => {
     }
 
     return (
-        <main className='grid-container grid-container--destination z-1'>
-            <div>
-                <h1 className="numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
-                <div className="destination-image" >
-                    <Image src={destinations[showDestination].images.webp} alt={`the ${destinations[showDestination].name}`} width={445} height={445} layout="intrinsic"></Image>
-                </div>
+        <main className='grid-container grid-container--destination z-1 flow'>            
+            <h1 className="numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
+            
+            <div className="destination-image" >
+                <Image src={destinations[showDestination].images.webp} alt={`the ${destinations[showDestination].name}`} width={445} height={445} layout="intrinsic"></Image>
             </div>
-            <div>
-                <div className="tab-list underline-indicators flex ">
-                    {destinations.map((element, index) => {
-                        return (
-                            <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" onClick={handleDestination(index)}>{element.name}</a>
-                        )
-                    })}
-                </div>
-                <article>
-                    <h3 className="fs-900 ff-serif uppercase">{destinations[showDestination].name}</h3>
-                    <p className="text-light">{destinations[showDestination].description}</p>
-                    <div className="separation-line"></div>
-                    <div className="destination-data-grid">
-                        <div>
-                            <p className="uppercase text-light letter-spacing-2">Avg. distance</p>
-                            <p className="description-text">{destinations[showDestination].distance}</p>
-                        </div>
-                        <div>
-                            <p className="uppercase text-light letter-spacing-2">est. travel time</p>
-                            <p className="description-text">{destinations[showDestination].travel}</p>
-                        </div>
+            
+            <div className="tab-list underline-indicators flex">
+                {destinations.map((element, index) => {
+                    return (
+                        <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" onClick={handleDestination(index)}>{element.name}</a>
+                    )
+                })}
+            </div>
+            
+            <article className="destination-content">
+                <h2 className="fs-800 ff-serif uppercase">{destinations[showDestination].name}</h2>
+                <p className="text-light">{destinations[showDestination].description}</p>
+                <div className="destination-meta flex">
+                    <div>
+                        <h3 className="uppercase text-light fs-200">Avg. distance</h3>
+                        <p className="uppercase fs-500 ff-serif">{destinations[showDestination].distance}</p>
                     </div>
-                </article>
-            </div>
+                    <div>
+                        <h3 className="uppercase text-light fs-200">est. travel time</h3>
+                        <p className="uppercase fs-500 ff-serif">{destinations[showDestination].travel}</p>
+                    </div>
+                </div>
+            </article>
         </main>
     );
 }
