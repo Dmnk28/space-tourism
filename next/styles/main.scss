@@ -100,7 +100,6 @@ select {
 
 .flow > *:where(:not(:first-child)) {
   margin-top: 1rem;
-  outline: 1px solid red;
 }
 
 .relative {
@@ -111,47 +110,6 @@ select {
   padding-inline: 2rem;
   margin-inline: auto;
   max-width: 80rem;
-}
-
-.grid-container {
-  display: grid;
-  text-align: center;
-  place-items: center;
-  row-gap: 10%;
-  padding: 0 1rem;
-
-  .grid-container * {
-    max-width: 50ch;
-  }
-}
-
-@media (min-width: 45rem) {
-  .grid-container {
-    text-align: left;
-    column-gap: var(--container-gap, 2rem);
-    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0px, 40rem)) minmax(
-        2rem,
-        1fr
-      );
-
-    *:first-child {
-      grid-column: 2;
-    }
-
-    *:last-child {
-      grid-column: 3;
-    }
-  }
-
-  .grid-container--home {
-    padding-bottom: unquote("max(6rem, 15vh)");
-    align-items: end;
-  }
-
-  .grid-container--destination {
-    padding-bottom: unquote("max(6rem, 15vh)");
-    align-items: end;
-  }
 }
 
 .sr-only {
@@ -273,6 +231,10 @@ select {
   }
 }
 
+.text-left {
+  text-align: left;
+}
+
 /* Z-indexes for development */
 
 
@@ -282,6 +244,10 @@ select {
 
 .z-1 {
   z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
 }
 
 .z-9999 {
@@ -556,6 +522,82 @@ select {
   }
 }
 
+/**********/
+/* Layout */
+/**********/
+
+
+
+.grid-container {
+  display: grid;
+  text-align: center;
+  place-items: center;
+  // row-gap: 10%;
+  padding: 0 1rem;
+  padding-bottom: 4rem;
+
+
+  .grid-container * {
+    max-width: 50ch;
+  }
+}
+
+.grid-container--destination {
+  // padding-bottom: unquote("max(6rem, 15vh)");
+  // align-items: end;
+  --flow-space: 2rem;
+  grid-template-areas: 
+    "title" 
+    "image" 
+    "tabs"
+    "text";
+}
+
+.numbered-title {
+  grid-area: title;
+}
+
 .destination-image {
-  margin-top: 4rem;
+  // margin-top: 4rem;
+  grid-area: image;
+  max-width: 60%;
+}
+
+.tab-list {
+  grid-area: tabs;
+}
+
+.destination-content {
+  grid-area: text;
+}
+
+.destination-meta {
+  flex-direction: column;
+  border-top: 1px solid rgba($clr-white, 0.25);
+  padding-top: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 45rem) {
+  .grid-container {
+    text-align: left;
+    column-gap: var(--container-gap, 2rem);
+    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0px, 40rem)) minmax(
+        2rem,
+        1fr
+      );
+
+    *:first-child {
+      grid-column: 2;
+    }
+
+    *:last-child {
+      grid-column: 3;
+    }
+  }
+
+  .grid-container--home {
+    padding-bottom: unquote("max(6rem, 15vh)");
+    align-items: end;
+  }
 }
