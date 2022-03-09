@@ -15,7 +15,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <>
       <BackgroundImage pageBgr={pageBgr}/>
       <a className="skip-to-content" href="#main">Skip to content</a>
-      <header className="primary-header flex z-1">
+      <header className="primary-header flex z-2">
         <Navigation setPageBgr={setPageBgr}/>
       </header>
       <span id='main'></span> 
