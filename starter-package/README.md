@@ -21,3 +21,6 @@ I used Next (Typescript) and Scss and deploy the project via Vercel. For the Scs
     * Mainly for trying out how to render different attributes/components depending on screensize. 
     * Could maybe have been solved easier by using CSS-modules per page, defining the BackgroundImage. But the other way was more exciting to practice
 * Backdrop-Filter workaround for Mozilla Firefox with transparent background and @support () {} for Chrome and others which are supporting backdrop-filter
+
+## To Solve: 
+* Underline Indicator Active Design works in Chromium but not in Firefox. Why?
