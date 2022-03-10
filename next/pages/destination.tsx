@@ -47,15 +47,15 @@ const Destination: NextPage = () => {
             
             <article className="destination-content">
                 <h2 className="fs-800 ff-serif uppercase">{destinations[showDestination].name}</h2>
-                <p className="text-light">{destinations[showDestination].description}</p>
+                <p>{destinations[showDestination].description}</p>
                 <div className="destination-meta flex">
                     <div>
                         <h3 className="uppercase text-light fs-200">Avg. distance</h3>
-                        <p className="uppercase fs-500 ff-serif">{destinations[showDestination].distance}</p>
+                        <p className="uppercase ff-serif">{destinations[showDestination].distance}</p>
                     </div>
                     <div>
                         <h3 className="uppercase text-light fs-200">est. travel time</h3>
-                        <p className="uppercase fs-500 ff-serif">{destinations[showDestination].travel}</p>
+                        <p className="uppercase ff-serif">{destinations[showDestination].travel}</p>
                     </div>
                 </div>
             </article>

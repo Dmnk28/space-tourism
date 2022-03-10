@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
 
-      <main className='grid-container grid-container--home'>
+      <main className='grid-container grid-container--home flow'>
         <div>
           <h1 className='uppercase ff-sans-serif fs-500 text-light letter-spacing-1'> 
             So, you want to travel to

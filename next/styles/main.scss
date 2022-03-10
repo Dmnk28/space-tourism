@@ -99,7 +99,7 @@ select {
 }
 
 .flow > *:where(:not(:first-child)) {
-  margin-top: 1rem;
+  margin-top: var(--flow-space, 1rem);
 }
 
 .relative {
@@ -537,30 +537,55 @@ select {
   padding-bottom: 4rem;
 
 
-  .grid-container * {
+  p:not([class]) {
     max-width: 50ch;
+  }
+
+  @media (min-width: 45rem) {
+      text-align: left;
+      column-gap: var(--container-gap, 2rem);
+      grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0px, 40rem)) minmax(
+          2rem,
+          1fr
+        );
   }
 }
 
 .grid-container--destination {
-  // padding-bottom: unquote("max(6rem, 15vh)");
-  // align-items: end;
   --flow-space: 2rem;
   grid-template-areas: 
     "title" 
     "image" 
     "tabs"
     "text";
+  
+  @media (min-width: 45em) {
+    justify-items: start;
+    align-content: start;
+    grid-template-areas: 
+      ".  title title  ." 
+      ".  image tabs   ." 
+      ".  image text   .";
+  }
 }
 
 .numbered-title {
   grid-area: title;
+
+  @media (min-width: 35em) {
+    justify-self: start;
+    margin-top: 2rem;
+  }
 }
 
 .destination-image {
   // margin-top: 4rem;
   grid-area: image;
   max-width: 60%;
+
+  @media (min-width: 45rem) {
+    max-width: 90%;
+  }
 }
 
 .tab-list {
@@ -576,16 +601,27 @@ select {
   border-top: 1px solid rgba($clr-white, 0.25);
   padding-top: 2.5rem;
   margin-top: 2.5rem;
+
+  p {
+    font-size: 1.75rem;
+  }
+
+  @media (min-width: 35em) {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  @media (min-width: 45rem) {
+    --gap: min(8vw, 6rem);
+    justify-content: start;
+  }
 }
 
 @media (min-width: 45rem) {
-  .grid-container {
-    text-align: left;
-    column-gap: var(--container-gap, 2rem);
-    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0px, 40rem)) minmax(
-        2rem,
-        1fr
-      );
+  .grid-container--home {
+    padding-bottom: unquote("max(6rem, 15vh)");
+    align-items: end;
+
 
     *:first-child {
       grid-column: 2;
@@ -594,10 +630,5 @@ select {
     *:last-child {
       grid-column: 3;
     }
-  }
-
-  .grid-container--home {
-    padding-bottom: unquote("max(6rem, 15vh)");
-    align-items: end;
   }
 }
