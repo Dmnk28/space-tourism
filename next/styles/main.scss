@@ -342,7 +342,7 @@ select {
     // Underline-indicators for are deactivated for mobile .primary-navigation. See .underline-indicators
     --m-underline: 0.5rem;
     list-style: none;
-    padding: unquote("min(20rem, 15vh)") 2rem;
+    padding: min(20rem, 15vh) 2rem;
     margin: 0;
     flex-direction: column;
     position: fixed;
@@ -619,7 +619,7 @@ select {
 
 @media (min-width: 45rem) {
   .grid-container--home {
-    padding-bottom: unquote("max(6rem, 15vh)");
+    padding-bottom: max(6rem, 15vh);
     align-items: end;
 
 
