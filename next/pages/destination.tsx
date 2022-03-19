@@ -37,14 +37,21 @@ const Destination: NextPage = () => {
                 <Image src={destinations[showDestination].images.webp} alt={`the ${destinations[showDestination].name}`} width={445} height={445} layout="intrinsic"></Image>
             </div>
             
-            <div className="tab-list underline-indicators flex">
-                {destinations.map((element, index) => {
-                    return (
-                        <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" onClick={handleDestination(index)}>{element.name}</a>
-                    )
-                })}
+            <div id="destination-tabs" className="tab-list underline-indicators flex">
+                {
+                    destinations.map((element, index) => {
+                        if (index === 0) {
+                            return (
+                                <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" aria-selected="true" onClick={handleDestination(index)}>{element.name}</a>
+                            )
+                        }
+                        return (
+                            <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" aria-selected="false" onClick={handleDestination(index)}>{element.name}</a>
+                        )
+                    })
+                }
             </div>
-            
+
             <article className="destination-content">
                 <h2 className="fs-800 ff-serif uppercase">{destinations[showDestination].name}</h2>
                 <p>{destinations[showDestination].description}</p>
