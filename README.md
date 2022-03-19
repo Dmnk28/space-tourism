@@ -34,12 +34,12 @@ So, while the styling is made by him entirely (in CSS) and only rewritten by me 
 * .firstElementChild is what to be expected in JS  with .firstElement
 * interfaces rock
 * I have to learn more about OOP and TypeScript
-* CSS.modules provide better performance --> have to learn it
 
 ### Next.js / React
 * custom Hooks for detecting Screensize via Screen width
     * could be used for rendering different components/elements/stuff in React
 * adressing Images in Public via CSS works simply by ignoring root and public in the path. For example "url('/shared/icon-hamburger.svg')".
+* CSS.modules provide better performance --> have to learn it
 
 ### CSS / SCSS
 * grid-template-areas are great
