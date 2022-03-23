@@ -437,7 +437,10 @@ select {
   --gap: 2rem;
 }
 
-.dot-indicators * {
+.dot-indicators {
+  justify-self: center;
+}
+.dot-indicators button {
   cursor: pointer;
   border: 0;
   border-radius: 50%;
@@ -445,10 +448,11 @@ select {
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.25);
 }
-.dot-indicators *:hover, .dot-indicators *:focus {
+.dot-indicators button:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
 .dot-indicators .active,
+.dot-indicators button:focus,
 .dot-indicators [aria-selected=true] {
   background-color: #FFFFFF;
 }
@@ -523,6 +527,7 @@ select {
   }
 }
 
+/* DESTINATION Layout */
 .grid-container--destination {
   --flow-space: 2rem;
   grid-template-areas: "title" "image" "tabs" "text";
@@ -585,6 +590,52 @@ select {
   }
 }
 
+/* CREW Layout */
+.grid-container--crew {
+  --flow-space: 2rem;
+  grid-template-areas: "title" "image" "dots" "text";
+}
+@media (min-width: 35em) {
+  .grid-container--crew {
+    padding-bottom: 0;
+    grid-template-areas: "title" "text" "dots" "image";
+  }
+}
+@media (min-width: 45em) {
+  .grid-container--crew {
+    justify-items: start;
+    align-content: start;
+    grid-template-areas: ".  title title  ." ".  text  image  ." ".  dots  image  .";
+  }
+}
+.grid-container--crew .crew-details {
+  grid-area: text;
+}
+.grid-container--crew .crew-image {
+  grid-area: image;
+  position: relative;
+  align-items: end;
+  width: 60%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+@media (min-width: 45rem) {
+  .grid-container--crew .crew-image {
+    max-width: 90%;
+  }
+}
+.grid-container--crew .crew-image * {
+  padding-bottom: 0;
+}
+.grid-container--crew .dot-indicators {
+  grid-area: dots;
+}
+@media (min-width: 45em) {
+  .grid-container--crew .dot-indicators {
+    justify-self: start;
+  }
+}
+
+/* HOME-Layout */
 @media (min-width: 45rem) {
   .grid-container--home {
     padding-bottom: max(6rem, 15vh);

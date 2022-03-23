@@ -449,20 +449,24 @@ select {
 }
 
 .dot-indicators {
-  * {
+  justify-self: center;
+  
+  button {
     cursor: pointer;
     border: 0;
     border-radius: 50%;
     aspect-ratio: 1;
     padding: 0.5rem;
     background-color: rgba($clr-white, 0.25);
+    
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: rgba($clr-white, 0.5);
     }
+
   }
   .active,
+  button:focus,
   [aria-selected="true"] {
     background-color: $clr-white;
   }
@@ -551,6 +555,8 @@ select {
   }
 }
 
+/* DESTINATION Layout */
+
 .grid-container--destination {
   --flow-space: 2rem;
   grid-template-areas: 
@@ -616,6 +622,67 @@ select {
     justify-content: start;
   }
 }
+
+/* CREW Layout */
+.grid-container--crew {
+  --flow-space: 2rem;
+  grid-template-areas: 
+    "title" 
+    "image" 
+    "dots"
+    "text";
+
+    @media (min-width: 35em) {
+      padding-bottom: 0;
+      grid-template-areas: 
+      "title"
+      "text"
+      "dots"
+      "image";
+    }
+  
+  @media (min-width: 45em) {
+    justify-items: start;
+    align-content: start;
+    grid-template-areas: 
+      ".  title title  ." 
+      ".  text  image  ." 
+      ".  dots  image  .";
+  }
+
+
+  .crew-details {
+    grid-area: text;
+  }
+
+  .crew-image {
+    // margin-top: 4rem;
+    grid-area: image;
+    position: relative;
+    align-items: end;
+    width: 60%;
+    border-bottom: 1px solid rgba($clr-white, 0.25);
+  
+    @media (min-width: 45rem) {
+      max-width: 90%;
+    }
+
+    * {
+      padding-bottom: 0;
+    }
+  }
+
+  .dot-indicators {
+    grid-area: dots;
+
+    @media (min-width: 45em) {
+      justify-self: start;
+    }
+  }
+}
+
+
+/* HOME-Layout */
 
 @media (min-width: 45rem) {
   .grid-container--home {
