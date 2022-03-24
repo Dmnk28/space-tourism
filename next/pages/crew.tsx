@@ -21,16 +21,18 @@ const Crew: NextPage = () => {
         <main className="grid-container grid-container--crew z-1 flow">
             <h1 className="numbered-title"><span aria-hidden="true">02</span> Meet your crew</h1>
             
-            <article className="crew-details">
-                <h2 className="fs-600 ff-serif uppercase text-light">{currentMember.role}</h2>
-                <p className="fs-700 ff-serif uppercase">{currentMember.name}</p>
+            <article className="crew-details flow">
+                <header className="flow flow--space-small">
+                    <h2 className="fs-600 ff-serif uppercase text-light">{currentMember.role}</h2>
+                    <p className="fs-700 ff-serif uppercase">{currentMember.name}</p>
+                </header>
                 <p className="destination-content">
                     {currentMember.bio}
                 </p>
             </article>
 
             <div className="crew-image" >
-                <Image src={currentMember.images.png} alt={currentMember.name} width={514} height={700} layout="intrinsic"></Image>
+                <Image src={currentMember.images.webp} alt={currentMember.name} width={currentMember.images.width} height={currentMember.images.height} layout="intrinsic"></Image>
             </div>
 
             <div className="dot-indicators flex">
