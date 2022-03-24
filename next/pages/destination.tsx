@@ -52,7 +52,7 @@ const Destination: NextPage = () => {
                 }
             </div>
 
-            <article className="destination-content">
+            <article className="destination-content flow">
                 <h2 className="fs-800 ff-serif uppercase">{destinations[showDestination].name}</h2>
                 <p>{destinations[showDestination].description}</p>
                 <div className="destination-meta flex">
