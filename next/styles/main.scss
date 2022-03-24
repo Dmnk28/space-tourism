@@ -102,6 +102,10 @@ select {
   margin-top: var(--flow-space, 1rem);
 }
 
+.flow--space-small {
+  --flow-space: 0.5rem;
+}
+
 .relative {
   position: relative;
 }
@@ -653,16 +657,26 @@ select {
 
   .crew-details {
     grid-area: text;
+
+    h2 {
+      color: rgba($clr-white, 0.5);
+    }
   }
 
   .crew-image {
     // margin-top: 4rem;
     grid-area: image;
     position: relative;
+    display: flex;
     align-items: end;
-    width: 60%;
+    // width: 60%;
+    padding-inline: clamp(2%, 5rem, 10%);
     border-bottom: 1px solid rgba($clr-white, 0.25);
   
+    @media (min-width: 35em) {
+      align-self: end;
+    }
+    
     @media (min-width: 45rem) {
       max-width: 90%;
     }

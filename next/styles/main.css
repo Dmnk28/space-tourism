@@ -99,6 +99,10 @@ select {
   margin-top: var(--flow-space, 1rem);
 }
 
+.flow--space-small {
+  --flow-space: 0.5rem;
+}
+
 .relative {
   position: relative;
 }
@@ -611,12 +615,21 @@ select {
 .grid-container--crew .crew-details {
   grid-area: text;
 }
+.grid-container--crew .crew-details h2 {
+  color: rgba(255, 255, 255, 0.5);
+}
 .grid-container--crew .crew-image {
   grid-area: image;
   position: relative;
+  display: flex;
   align-items: end;
-  width: 60%;
+  padding-inline: clamp(2%, 5rem, 10%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+@media (min-width: 35em) {
+  .grid-container--crew .crew-image {
+    align-self: end;
+  }
 }
 @media (min-width: 45rem) {
   .grid-container--crew .crew-image {
