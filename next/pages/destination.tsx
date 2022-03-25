@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
 import { CONTENT } from "../data/content";
 
 type Destinations = {
@@ -18,15 +18,42 @@ const Destination: NextPage = () => {
     const [showDestination, setShowDestination] = useState(0);
     const destinations: Destinations = [...CONTENT.destinations]; 
     
-    const handleDestination = (index:number) => (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        event.preventDefault();
+    /**
+     * Manages the showDestination-State for switching content and resets all tabs to ariaSelected false.
+     * @param index Index belonging to the array-element of the corresponding clicked or entered html-element
+     */
+    const manageTabNavigation = (index:number): void => {
         /* get rid of old underline-decoration in Menu */
         const allTabItems: NodeListOf<Element> = document.querySelectorAll('.tab');
         allTabItems?.forEach(element => (element.ariaSelected = "false"));
         /* Trigger Content-Change*/
         setShowDestination(index);
+    }
+
+    /**
+     * Handles Click-Events in the Destination-Tab.
+     * @param index Index belonging to the array-element of the corresponding clicked or entered html-element
+     * @param event onClick-event, transporting the clicked target 
+     */
+    const handleDestinationClick = (index:number) => (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void => {
+        event.preventDefault();
+        manageTabNavigation(index);
         /* Set aria-Selected true for Screen-Readers and underline-styling(--> CSS) */
         event.currentTarget.ariaSelected = "true";
+    }
+
+    /**
+     * Handles KeyDown-Events in the Destination-Tab.
+     * In particullar it acts as soon as the Enter-Key is fired 
+     * @param index Index belonging to the array-element of the corresponding clicked or entered html-element
+     * @param event KeyDown-event, transporting the target of the interaction 
+     */
+    const handleDestinationKeyDown = (index:number) => (event: React.KeyboardEvent<HTMLAnchorElement>): void => {
+        // Didn't use event.preventDefault() here, because this would destroy the tabulator-navigation 
+        if (event.key === 'Enter') {
+            manageTabNavigation(index)
+            event.currentTarget.ariaSelected = "true";
+        }
     }
 
     return (
@@ -42,11 +69,11 @@ const Destination: NextPage = () => {
                     destinations.map((element, index) => {
                         if (index === 0) {
                             return (
-                                <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" aria-selected="true" onClick={handleDestination(index)}>{element.name}</a>
+                                <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" aria-selected="true" onClick={handleDestinationClick(index)} tabIndex={0} onKeyDown={handleDestinationKeyDown(index)}>{element.name}</a>
                             )
                         }
                         return (
-                            <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" aria-selected="false" onClick={handleDestination(index)}>{element.name}</a>
+                            <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" aria-selected="false" onClick={handleDestinationClick(index)} tabIndex={0} onKeyDown={handleDestinationKeyDown(index)}>{element.name}</a>
                         )
                     })
                 }
