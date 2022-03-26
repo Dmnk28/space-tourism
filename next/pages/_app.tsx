@@ -18,8 +18,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <header className="primary-header flex z-2">
         <Navigation setPageBgr={setPageBgr}/>
       </header>
-      <span id='main'></span> 
-        <Component className="z-1" {...pageProps} />
+      <span id='main'></span>{/* used for skip-to-content only*/}
+      <Component className="z-1" {...pageProps} />
     </>
   )
 }

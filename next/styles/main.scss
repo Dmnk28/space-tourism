@@ -143,6 +143,12 @@ select {
     }
 }
 
+
+/* Eliminate main-span in flow */
+main {
+  @extend sr-only; 
+}
+
 /* Colors */
 .bg-dark {
   background-color: $clr-dark;
