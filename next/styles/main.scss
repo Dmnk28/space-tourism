@@ -145,8 +145,8 @@ select {
 
 
 /* Eliminate main-span in flow */
-main {
-  @extend sr-only; 
+#main {
+  @extend .sr-only; 
 }
 
 /* Colors */
@@ -484,7 +484,11 @@ main {
 
 .numbered-dots {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+
+  @media (min-width: 45rem) {
+    flex-direction: column;
+  }
 
   button {
     cursor: pointer;
@@ -496,6 +500,7 @@ main {
     transition: border-color 400ms ease-in-out,
       background-color 500ms ease-in-out;
     border-radius: 50%;
+    min-width: 4rem;
     aspect-ratio: 1;
     padding: 1em;
     color: $clr-white;
@@ -509,6 +514,7 @@ main {
   [aria-selected="true"] {
     border-color: $clr-white;
     background-color: $clr-white;
+    color: $clr-dark;
   }
 }
 
@@ -680,7 +686,6 @@ main {
     position: relative;
     display: flex;
     align-items: flex-end;
-    // width: 60%;
     padding-inline: clamp(2%, 5rem, 10%);
     border-bottom: 1px solid rgba($clr-white, 0.25);
   
@@ -707,13 +712,62 @@ main {
 }
 
 
+/* Technology Layout */
+
+.grid-container--tech {
+  grid-template-areas: 
+    "title"
+    "image"
+    "tabs";
+
+  .tech-image {
+    grid-area: image;
+  }
+
+  .tech-tabs {
+    grid-area: tabs;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    grid-template-areas: 
+      "dots"
+      "text";
+    
+    
+    @media (min-width: 45rem) {
+      justify-items: left;
+      grid-template-columns: 2fr 9fr;  
+      grid-template-areas: 
+          "dots text";
+      }
+
+    .numbered-dots {
+      grid-area: dots;
+
+      @media (min-width: 45rem) {
+        margin-right: 1rem;
+      }
+    }
+
+    .tech-content {
+      grid-area: text;
+    
+    }
+  }
+
+  @media (min-width: 45rem) {
+    grid-template-areas: 
+      ". title title ."
+      ". tabs image .";
+  }
+}
+
 /* HOME-Layout */
 
 @media (min-width: 45rem) {
   .grid-container--home {
     padding-bottom: max(6rem, 15vh);
     align-items: end;
-
 
     *:first-child {
       grid-column: 2;
