@@ -1,23 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 
 import switchActiveLookingTabIndicators from "../utils/switchActiveLookingTabIndicators";
+import setFirstTabIndicatorToAriaSelected from "../utils/setFirstTabIndicatorToAriaSelected";
 
 import { CONTENT } from "../data/content";
 
-type Destinations = {
-    name: string;
-    images: {
-        png: string;
-        webp: string;
-    };
-    description: string;
-    distance: string;
-    travel: string;
-}[]
+import type { Destinations, PageBgrProp } from "../utils/types";
 
-const Destination: NextPage = () => {
+const Destination: NextPage<PageBgrProp> = ({ setPageBgr }) => {
     const [showDestination, setShowDestination] = useState(0);
     const destinations: Destinations = [...CONTENT.destinations]; 
     
@@ -54,6 +46,11 @@ const Destination: NextPage = () => {
         }
     }
 
+    useEffect(() => {
+        setPageBgr('destination');
+        setFirstTabIndicatorToAriaSelected('.tab');
+    }, []);
+
     return (
         <main className='grid-container grid-container--destination z-1 flow'>            
             <h1 className="numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
@@ -65,13 +62,10 @@ const Destination: NextPage = () => {
             <div id="destination-tabs" className="tab-list underline-indicators flex">
                 {
                     destinations.map((element, index) => {
-                        if (index === 0) {
-                            return (
-                                <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" aria-selected="true" onClick={handleDestinationClick(index)} tabIndex={0} onKeyDown={handleDestinationKeyDown(index)}>{element.name}</a>
-                            )
-                        }
                         return (
-                            <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" aria-selected="false" onClick={handleDestinationClick(index)} tabIndex={0} onKeyDown={handleDestinationKeyDown(index)}>{element.name}</a>
+                            <a key={element.name} className="tab uppercase ff-sans-condensed text-accent letter-spacing-2" aria-selected="false" onClick={handleDestinationClick(index)} tabIndex={0} onKeyDown={handleDestinationKeyDown(index)}>
+                                {element.name}
+                            </a>
                         )
                     })
                 }

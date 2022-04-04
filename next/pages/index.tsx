@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link';
 
-const Home: NextPage = () => {
+import type { PageBgrProp } from "../utils/types";
+
+const Home: NextPage<PageBgrProp> = ({ setPageBgr }) => {
+
+  useEffect(() => {
+    setPageBgr('home');
+  }, []);
+
   return (
     <React.Fragment>
       <Head>

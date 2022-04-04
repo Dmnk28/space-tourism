@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 
 import switchActiveLookingTabIndicators from "../utils/switchActiveLookingTabIndicators";
+import setFirstTabIndicatorToAriaSelected from "../utils/setFirstTabIndicatorToAriaSelected";
+
+import type { PageBgrProp } from "../utils/types";
 
 import { CONTENT } from '../data/content';
 
-const Crew: NextPage = () => {
+const Crew: NextPage<PageBgrProp> = ({ setPageBgr }) => {
     const crewMembers = [...CONTENT.crew]
     const [currentMember, setCurrentMember] = useState(crewMembers[0])
     
     const handleCrewMembers = (index: number) => (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
         event.preventDefault();
         switchActiveLookingTabIndicators('.dot-btn', event.currentTarget);
-        
         setCurrentMember(crewMembers[index]);
     }
+
+
+    useEffect(() => {
+        setPageBgr('crew');
+        setFirstTabIndicatorToAriaSelected('.dot-btn');
+    }, []);
 
     return (
         <main className="grid-container grid-container--crew z-1 flow">
@@ -38,9 +46,10 @@ const Crew: NextPage = () => {
             <div className="dot-indicators flex">
                 {
                     crewMembers.map((member, index)=> {
-                        if (index === 0) return (<button className="dot-btn" key={member.name} onClick={handleCrewMembers(index)} aria-selected="true"><span className="sr-only">{member.name}</span></button>) 
                         return (
-                            <button className="dot-btn" key={member.name} onClick={handleCrewMembers(index)} aria-selected="false"><span className="sr-only">{member.name}</span></button>
+                            <button className="dot-btn" key={member.name} onClick={handleCrewMembers(index)} aria-selected="false">
+                                <span className="sr-only">{member.name}</span>
+                            </button>
                         )
                     })
                 }
