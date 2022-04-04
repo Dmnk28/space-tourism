@@ -5,16 +5,9 @@ import { useRouter } from "next/router";
 
 import switchActiveLookingTabIndicators from "../utils/switchActiveLookingTabIndicators";
 
+import type { MenuOpen } from "../utils/types";
 
-type NavigationProps = {
-    setPageBgr: React.Dispatch<React.SetStateAction<string>>;
-}
-
-type MenuOpen = {
-    isMenuOpen: boolean;
-}
-
-const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
+const Navigation: React.FC = () => {
     const router = useRouter();
     const [burgerMenuOpen, setBurgerMenuOpen] = useState<MenuOpen>({
         isMenuOpen: false,
@@ -25,7 +18,7 @@ const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
         /* get rid of old underline-decoration in Menu */
         switchActiveLookingTabIndicators('.p-nav-link', event.currentTarget)
         /* BackgroundImageSetting & Routing */
-        setPageBgr(event.currentTarget.title);        
+        // setPageBgr(event.currentTarget.title);        
         router.push(event.currentTarget.href);
     }
     
