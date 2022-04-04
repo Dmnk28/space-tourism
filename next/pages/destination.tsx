@@ -1,6 +1,9 @@
+import React, { useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
-import React, { useState } from "react";
+
+import switchActiveLookingTabIndicators from "../utils/switchActiveLookingTabIndicators";
+
 import { CONTENT } from "../data/content";
 
 type Destinations = {
@@ -19,13 +22,11 @@ const Destination: NextPage = () => {
     const destinations: Destinations = [...CONTENT.destinations]; 
     
     /**
-     * Manages the showDestination-State for switching content and resets all tabs to ariaSelected false.
+     * Manages the showDestination-State for switching content and calls switchActiveLookingTabIndicators to optically indicate content-switch.
      * @param index Index belonging to the array-element of the corresponding clicked or entered html-element
      */
-    const manageTabNavigation = (index:number): void => {
-        /* get rid of old underline-decoration in Menu */
-        const allTabItems: NodeListOf<Element> = document.querySelectorAll('.tab');
-        allTabItems?.forEach(element => (element.ariaSelected = "false"));
+    const manageTabNavigation = (index:number, target: HTMLAnchorElement): void => {
+        switchActiveLookingTabIndicators('.tab', target)
         /* Trigger Content-Change*/
         setShowDestination(index);
     }
@@ -37,9 +38,7 @@ const Destination: NextPage = () => {
      */
     const handleDestinationClick = (index:number) => (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void => {
         event.preventDefault();
-        manageTabNavigation(index);
-        /* Set aria-Selected true for Screen-Readers and underline-styling(--> CSS) */
-        event.currentTarget.ariaSelected = "true";
+        manageTabNavigation(index, event.currentTarget);
     }
 
     /**
@@ -51,8 +50,7 @@ const Destination: NextPage = () => {
     const handleDestinationKeyDown = (index:number) => (event: React.KeyboardEvent<HTMLAnchorElement>): void => {
         // Didn't use event.preventDefault() here, because this would destroy the tabulator-navigation 
         if (event.key === 'Enter') {
-            manageTabNavigation(index)
-            event.currentTarget.ariaSelected = "true";
+            manageTabNavigation(index, event.currentTarget)
         }
     }
 

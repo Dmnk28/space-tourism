@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-
 import { NextPage } from "next";
 import Image from "next/image";
+
+import switchActiveLookingTabIndicators from "../utils/switchActiveLookingTabIndicators";
 
 import { CONTENT } from '../data/content';
 
@@ -11,10 +12,9 @@ const Crew: NextPage = () => {
     
     const handleCrewMembers = (index: number) => (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
         event.preventDefault();
-        const allDotBtns: NodeListOf<Element> = document.querySelectorAll('.dot-btn');
-        allDotBtns?.forEach(element => (element.ariaSelected = "false"))
+        switchActiveLookingTabIndicators('.dot-btn', event.currentTarget);
+        
         setCurrentMember(crewMembers[index]);
-        event.currentTarget.ariaSelected = "true";
     }
 
     return (

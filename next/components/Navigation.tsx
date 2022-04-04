@@ -1,7 +1,10 @@
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+
+import switchActiveLookingTabIndicators from "../utils/switchActiveLookingTabIndicators";
+
 
 type NavigationProps = {
     setPageBgr: React.Dispatch<React.SetStateAction<string>>;
@@ -20,13 +23,10 @@ const Navigation: React.FC<NavigationProps> = ({ setPageBgr }) => {
     const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>):void => {
         event.preventDefault();
         /* get rid of old underline-decoration in Menu */
-        const allPrimaryNavLinkItems: NodeListOf<Element> = document.querySelectorAll('.p-nav-link');
-        allPrimaryNavLinkItems?.forEach(element => (element.ariaSelected = "false"));
+        switchActiveLookingTabIndicators('.p-nav-link', event.currentTarget)
         /* BackgroundImageSetting & Routing */
         setPageBgr(event.currentTarget.title);        
         router.push(event.currentTarget.href);
-        /* Set aria-Selected true for Screen-Readers and underline-styling(--> CSS) */
-        event.currentTarget.ariaSelected = "true";
     }
     
     const handleBurgerMenu = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>):void => {
