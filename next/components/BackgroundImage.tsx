@@ -16,6 +16,7 @@ const BackgroundImage: React.FC<BgImg> = ({ pageBgr }) => {
             objectFit="cover" 
             objectPosition="bottom center"
             className='flex z-index-bgr'
+            alt=""
         />
     )
 }

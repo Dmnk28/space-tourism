@@ -32,7 +32,7 @@ const Home: NextPage<PageBgrProp> = ({ setPageBgr }) => {
           </p>
         </div>
         <div>
-          <Link href="/" passHref>
+          <Link href="/destination" passHref>
             <a className='large-button uppercase ff-serif text-dark bg-white'>Explore</a>
           </Link> 
         </div>

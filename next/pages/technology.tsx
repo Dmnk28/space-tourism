@@ -25,10 +25,10 @@ const Technology: NextPage<PageBgrProp> = ({ setPageBgr }) => {
 
     const selectImage = () => {
         if (mobileDevice) return (
-            <Image src={currentTech.images.landscape} width={768} height={310} layout="intrinsic"/>
+            <Image src={currentTech.images.landscape} alt={currentTech.name} width={768} height={310} layout="intrinsic"/>
         )
         return (
-            <Image src={currentTech.images.portrait} width={515} height={527} layout="intrinsic"/>
+            <Image src={currentTech.images.portrait} alt={currentTech.name} width={515} height={527} layout="intrinsic"/>
         );
     }
 
