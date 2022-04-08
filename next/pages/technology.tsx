@@ -10,6 +10,12 @@ import type { PageBgrProp } from "../utils/types";
 
 import { CONTENT } from "../data/content";
 
+export async function getStaticProps() {
+    return {
+      props: {},
+    }
+}
+
 const Technology: NextPage<PageBgrProp> = ({ setPageBgr }) => {
     const tech = [...CONTENT.technology]
     const [currentTech, setCurrentTech] = useState(tech[0]);
