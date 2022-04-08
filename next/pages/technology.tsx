@@ -38,7 +38,7 @@ const Technology: NextPage<PageBgrProp> = ({ setPageBgr }) => {
     }, []);
 
     return (
-        <main className="grid-container grid-container--tech z-1 flow">
+        <main className="grid-container grid-container--tech z-1">
             <h1 className="numbered-title"><span aria-hidden="true">03</span>Space Launch 101</h1>
             <div className="tech-tabs flow">
                 <div className="numbered-dots flex">
