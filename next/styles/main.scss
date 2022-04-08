@@ -301,6 +301,10 @@ select {
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: 35rem) {
+    margin-bottom: 6rem;
+  }
+
   @media (min-width: 45rem) {
     &::before {
       content: '';
@@ -321,9 +325,23 @@ select {
 
 
 .logo {
-  margin: 1.5rem clamp(1.5rem, 5vw ,3.5rem);
+  display: block;
+  position: relative;
+  margin-inline: clamp(1.5rem, 5vw ,3.5rem);
   min-width: 30px;
   aspect-ratio: 1;
+
+  @media (max-width: 35rem) {
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+    margin-inline-start: 0;
+  }
+
+  @media (min-width: 45rem) {
+    width: clamp(90px, 7rem, 130px);
+    margin-inline-end: clamp(1rem, 7vw, 8rem);
+  }
 }
 
 .mobile-nav-toggle {

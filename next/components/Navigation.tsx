@@ -40,7 +40,7 @@ const Navigation: React.FC = () => {
     return (
         <>
             <div className="logo">
-                <Image src="/logo.svg" alt="space tourism" width={30} height={30} />
+                <Image src="/logo.svg" alt="space tourism" width={30} height={30} layout="responsive" />
             </div>
             <button className="mobile-nav-toggle" onClick={handleBurgerMenu} aria-controls="primary-navigation" aria-expanded={burgerMenuOpen.isMenuOpen}> 
                 <span className="sr-only">Menu</span>

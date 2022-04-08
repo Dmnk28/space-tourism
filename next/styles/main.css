@@ -299,6 +299,11 @@ select {
   justify-content: space-between;
   align-items: center;
 }
+@media (max-width: 35rem) {
+  .primary-header {
+    margin-bottom: 6rem;
+  }
+}
 @media (min-width: 45rem) {
   .primary-header::before {
     content: "";
@@ -316,9 +321,27 @@ select {
 }
 
 .logo {
-  margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+  display: block;
+  position: relative;
+  margin-inline: clamp(1.5rem, 5vw, 3.5rem);
   min-width: 30px;
   aspect-ratio: 1;
+}
+@media (max-width: 35rem) {
+  .logo {
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+    -webkit-margin-start: 0;
+            margin-inline-start: 0;
+  }
+}
+@media (min-width: 45rem) {
+  .logo {
+    width: clamp(90px, 7rem, 130px);
+    -webkit-margin-end: clamp(1rem, 7vw, 8rem);
+            margin-inline-end: clamp(1rem, 7vw, 8rem);
+  }
 }
 
 .mobile-nav-toggle {
