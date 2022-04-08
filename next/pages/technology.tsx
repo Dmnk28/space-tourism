@@ -50,6 +50,7 @@ const Technology: NextPage<PageBgrProp> = ({ setPageBgr }) => {
                 <div className="numbered-dots flex">
                     {
                         tech.map((techElement, index) => {
+                            console.log('rendered')
                             return (
                                 <button key={techElement.name} onClick={changeSelectedTech(index)} className="numbered-dot-btn" aria-selected="false">
                                     {index + 1}
