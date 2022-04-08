@@ -10,12 +10,6 @@ import type { PageBgrProp } from "../utils/types";
 
 import { CONTENT } from "../data/content";
 
-export async function getStaticProps() {
-    return {
-      props: {},
-    }
-}
-
 const Technology: NextPage<PageBgrProp> = ({ setPageBgr }) => {
     const tech = [...CONTENT.technology]
     const [currentTech, setCurrentTech] = useState(tech[0]);
@@ -50,7 +44,6 @@ const Technology: NextPage<PageBgrProp> = ({ setPageBgr }) => {
                 <div className="numbered-dots flex">
                     {
                         tech.map((techElement, index) => {
-                            console.log('rendered')
                             return (
                                 <button key={techElement.name} onClick={changeSelectedTech(index)} className="numbered-dot-btn" aria-selected="false">
                                     {index + 1}
