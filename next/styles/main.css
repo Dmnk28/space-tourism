@@ -611,6 +611,7 @@ select {
 /* CREW Layout */
 .grid-container--crew {
   --flow-space: 2rem;
+  align-self: flex-end;
   grid-template-areas: "title" "image" "dots" "text";
 }
 @media (min-width: 35rem) {
@@ -640,6 +641,9 @@ select {
   padding-inline: clamp(2%, 5rem, 10%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
+.grid-container--crew .crew-image * {
+  bottom: 0;
+}
 @media (min-width: 35rem) {
   .grid-container--crew .crew-image {
     align-self: end;
@@ -647,7 +651,11 @@ select {
 }
 @media (min-width: 45rem) {
   .grid-container--crew .crew-image {
-    max-width: 90%;
+    bottom: 0;
+    height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    border-bottom: none;
   }
 }
 .grid-container--crew .crew-image * {

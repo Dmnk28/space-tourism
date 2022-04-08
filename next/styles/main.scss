@@ -510,6 +510,7 @@ select {
       border-color: $clr-white;
     }
   }
+
   .active,
   [aria-selected="true"] {
     border-color: $clr-white;
@@ -645,6 +646,7 @@ select {
 /* CREW Layout */
 .grid-container--crew {
   --flow-space: 2rem;
+  align-self: flex-end;
   grid-template-areas: 
     "title" 
     "image" 
@@ -679,20 +681,27 @@ select {
   }
 
   .crew-image {
-    // margin-top: 4rem;
     grid-area: image;
     position: relative;
     display: flex;
     align-items: flex-end;
     padding-inline: clamp(2%, 5rem, 10%);
     border-bottom: 1px solid rgba($clr-white, 0.25);
+
+    *{
+      bottom: 0;
+    }
   
     @media (min-width: 35rem) {
       align-self: end;
     }
     
     @media (min-width: 45rem) {
-      max-width: 90%;
+      bottom: 0;   
+      height: 60vh;
+      display: flex;
+      align-items: flex-end;
+      border-bottom: none;
     }
 
     * {
